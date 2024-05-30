@@ -1,4 +1,4 @@
-# componentes-twig-tray
+# Componentes-twig-tray 👌
 Componentes para usar na plataforma tray commerce, usando template engine Twig. 
 
 ## Instalação
