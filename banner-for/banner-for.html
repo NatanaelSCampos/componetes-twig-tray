@@ -1,0 +1,49 @@
+{% set bannersList = [] %}
+
+{% for slide in banners.extra10.slides %}
+
+    {% set slideLink = slide.link %}
+    {% set slideTarget = slide.target %}
+    {% set slideImage = slide.image %}
+    {% set slideLabel = slide.label %}
+    {% set slideHeight = slide.height %}
+    {% set slideWidth = slide.width %}
+    
+    {% set bannersList = bannersList|merge([{"slide_link": slideLink, "slide_target": slideTarget, "slide_image": slideImage, "slide_label": slideLabel, "slide_height": slideHeight, "slide_width": slideWidth }]) %}
+{% endfor %}  
+
+
+<div class="banner-for-blu">
+    <span class="title-section">{{settings.banner_rodape}}</span>
+    <div class="banners-for">
+        {% for banner in bannersList %}
+            <a href="{{ banner.slide_link }}" class="banner-link" target="{{ banner.slide_target }}">
+                <img src="{{ banner.slide_image }}" alt="{{ banner.slide_label }}">
+            </a>
+        {% endfor %}    
+    </div>
+</div>
+
+<style>
+    .banner-for-blu{
+        margin-bottom: 90px;    
+    }
+    .banners-for{
+        display: flex;
+        gap:16px;    
+    }
+    .banners-for img{
+        width: 100%;
+        border-radius: 10px;
+    }
+    @media (max-width:800px){
+        .banners-for{
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        a.banner-link {
+            width: 47%;
+            height: auto;
+        }
+    }
+</style>
